@@ -11,17 +11,30 @@ const Post = props => {
   // set up state for the likes
   const [likes, setLikes] = useState(props.post.likes)
   const [liked, setLiked] = useState(false)
+  
   const like = (e) => {
     if (!liked){
       setLikes(likes + 1)
       e.target.classList.add('liked')
+      if (e.target.firstChild){
+        e.target.firstChild.classList.add('liked')
+      }else{
+        e.target.parentElement.classList.add('liked')
+      }
       setLiked(true)
     }else{
       setLikes(likes - 1)
       e.target.classList.remove('liked')
+      if (e.target.firstChild){
+        e.target.firstChild.classList.remove('liked')
+      }else{
+        e.target.parentElement.classList.remove('liked')
+      }
       setLiked(false)
     }
+    e.stopPropagation()
   }
+
   return (
     <div className="post-border">
       <PostHeader
