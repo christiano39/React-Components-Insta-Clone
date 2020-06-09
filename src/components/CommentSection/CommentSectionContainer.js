@@ -13,8 +13,6 @@ const CommentSection = props => {
       username: 'christiano39',
       text: currentComment
     }])
-    console.log(currentComment)
-    console.log(comments)
   }
   return (
     <div>
