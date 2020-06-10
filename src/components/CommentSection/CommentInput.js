@@ -2,13 +2,23 @@
 import React from 'react';
 
 const CommentInput = props => {
+  
+  const changeHandler = event => {
+    props.changeComment(event.target.value)
+  }
+
+  const sumbitHandler = event => {
+    props.submitComment()
+    event.preventDefault()
+  }
+
   return (
-    <form className="comment-form" onSubmit={props.submitComment}>
+    <form className="comment-form" onSubmit={sumbitHandler}>
       <input
         type="text"
         value={props.comment}
         placeholder="Add comment... "
-        onChange={props.changeComment}
+        onChange={changeHandler}
       />
     </form>
   );
